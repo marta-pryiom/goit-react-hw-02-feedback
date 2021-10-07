@@ -1,7 +1,8 @@
 import { Component } from 'react';
-import { Statistics } from './components/Feedback';
-import { FeedbackOptions } from './components/Feedback';
-import { Section } from './components/Feedback';
+import FeedbackOptions from './components/Feedback';
+import Statistics from './components/Statistics';
+import Section from './components/Section';
+import Container from './components/Container';
 
 class App extends Component {
   state = {
@@ -13,11 +14,12 @@ class App extends Component {
     const currentEl = e.target.value;
     this.setState(prev => {
       return {
-        ...currentEl,
+        ...prev,
         [currentEl]: prev[currentEl] + 1,
       };
     });
   };
+
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
     const total = good + neutral + bad;
@@ -33,13 +35,11 @@ class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     const optionValue = ['good', 'neutral', 'bad'];
-    const {
-      onLeaveFeedback,
-      countTotalFeedback,
-      countPositiveFeedbackPercentage,
-    } = this;
+    const { onLeaveFeedback } = this;
+    const totalFn = this.countTotalFeedback();
+    const PositiveFn = this.countPositiveFeedbackPercentage();
     return (
-      <div>
+      <Container>
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={optionValue}
@@ -51,11 +51,11 @@ class App extends Component {
             good={good}
             neutral={neutral}
             bad={bad}
-            total={countTotalFeedback()}
-            positivePercentage={countPositiveFeedbackPercentage()}
+            total={totalFn}
+            positivePercentage={PositiveFn}
           />
         </Section>
-      </div>
+      </Container>
     );
   }
 }

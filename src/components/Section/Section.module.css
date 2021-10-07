@@ -1,0 +1,6 @@
+.Title {
+  display: flex;
+  justify-content: center;
+  color: rgb(100, 51, 51);
+  margin: 0;
+}

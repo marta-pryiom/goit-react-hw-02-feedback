@@ -1,0 +1,11 @@
+.FeedbackInfoItems {
+  list-style: none;
+  color: rgb(58, 57, 57);
+  font-size: 20px;
+  font-weight: 500;
+  border: 0.5px solid rgba(145, 97, 97, 0.74);
+  border-radius: 5px;
+}
+li .Item {
+  margin: 0;
+}
