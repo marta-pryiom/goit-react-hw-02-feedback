@@ -1,8 +1,8 @@
 import { Component } from 'react';
-import FeedbackOptions from './components/Feedback';
-import Statistics from './components/Statistics';
-import Section from './components/Section';
-import Container from './components/Container';
+import FeedbackOptions from '../FeedbackOptions';
+import Statistics from '../Statistics';
+import Section from '../Section';
+import Container from '../Container';
 
 class App extends Component {
   state = {
@@ -33,8 +33,8 @@ class App extends Component {
       : 0;
   };
   render() {
+    const optionValue = Object.keys(this.state);
     const { good, neutral, bad } = this.state;
-    const optionValue = ['good', 'neutral', 'bad'];
     const { onLeaveFeedback } = this;
     const totalFn = this.countTotalFeedback();
     const PositiveFn = this.countPositiveFeedbackPercentage();
